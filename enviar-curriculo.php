@@ -7,10 +7,7 @@ session_start();
 
 require_once("config/database.php");
 
-$nome = $_POST['nome'];
-$sobrenome = $_POST['sobrenome'];
-$email = $_POST['email'];
-$cidade = $_POST['cidade'];
+$idUsuario = $_SESSION['id'];
 $resumoProfissional = $_POST['resumoProfissional'];
 $curriculo = $_FILES['curriculo'];
 
@@ -49,21 +46,13 @@ try{
 
         if (move_uploaded_file($caminhoTemp, $caminhoFinal)) {
             
-            $sql = "INSERT INTO tbl_usuario (nome, sobrenome, email, resumo_profissional, curriculo, id_cidade) VALUES
-                    (?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO tbl_curriculo (resumo_profissional, curriculo, id_usuario) VALUES
+                    (?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param(
-                "sssssi", 
-                $nome, 
-                $sobrenome, 
-                $email, 
-                $resumoProfissional,
-                $caminhoFinal,
-                $cidade
-            );
+            $stmt->bind_param("ssi", $resumoProfissional, $caminhoFinal, $idUsuario);
 
             if ($stmt->execute()) {
-                # $_SESSION['aviso'] = "Currículo enviado com sucesso!";
+                # "Currículo enviado com sucesso!";
                 header("Location: index.php");
             } else {
                 echo "Erro ao salvar informações no banco de dados.";

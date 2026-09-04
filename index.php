@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+
+if(isset($_SESSION['logado'])) {
+    $nome = $_SESSION['nome'];
+    $sobrenome = $_SESSION['sobrenome'];
+    $email = $_SESSION['email'];
+    $cidade = $_SESSION['cidade'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,12 +29,16 @@
                 CURRICULO<span>+</span>
             </h1>
             <nav>
-                <a href="login.php">
-                    Entrar
-                </a>
-                <a href="registro.php">
-                    Cadastrar
-                </a>
+                <?php if(isset($_SESSION['logado']) && $_SESSION['logado'] == True): ?>
+                    <a href=""><?php echo $nome; ?></a>
+                <?php else: ?>
+                    <a href="login.php">
+                        Entrar
+                    </a>
+                    <a href="registro.php">
+                        Cadastrar
+                    </a>
+                <?php endif; ?>
             </nav>
         </div>
     </header>

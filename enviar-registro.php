@@ -6,7 +6,7 @@ try{
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $nome = trim($_POST['nome']);
         $sobrenome = trim($_POST['sobrenome']);
-        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $email = strtolower(filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL));
         $senha = $_POST['senha'];
         $cidade = $_POST['cidade'];
 

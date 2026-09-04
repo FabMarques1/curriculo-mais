@@ -1,17 +1,25 @@
 <?php
 session_start();
 
-if (!$_SESSION['login']) {
-    header("Location: index.php");
+require_once("config/database.php");
+
+if(isset($_SESSION['logado'])) {
+    $nome = $_SESSION['nome'];
+    $sobrenome = $_SESSION['sobrenome'];
+    $email = $_SESSION['email'];
+    $cidade = $_SESSION['cidade'];
 }
 
 require_once("config/database.php");
 
-$query = "SELECT id, nome FROM tbl_cidade";
+$query = "SELECT nome FROM tbl_cidade WHERE id = ?";
 $stmt = $conn->prepare($query);
+$stmt->bind_param("i", $cidade);
 $stmt->execute();
 
 $result = $stmt->get_result();
+
+$row = $result->fetch_assoc();
 
 ?>
 
@@ -55,39 +63,31 @@ $result = $stmt->get_result();
                 <div class="form-header">
                     <span>FORMULÁRIO</span>
                     <h2>Seus dados</h2>
-                    <p>Todos os campos com * são obrigatórios.</p>
+                    <p>Confira se seus dados estão certos antes de enviar.</p>
                 </div>
 
                 <form action="enviar-curriculo.php" method="POST" enctype="multipart/form-data">
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="nome">Primeiro nome *</label>
-                            <input id="nome" name="nome" type="text" placeholder="Seu nome..." minlength="1" maxlength="40" required>
+                            <label for="nome">Primeiro nome</label>
+                            <i><?php echo $nome; ?></i>
                         </div>
 
                         <div class="form-group">
                             <label for="sobrenome">Sobrenome</label>
-                            <input id="sobrenome" name="sobrenome" type="text" placeholder="Seu sobrenome..." minlength="1" maxlength="75">
+                            <i><?php echo $sobrenome; ?></i>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">E-mail *</label>
-                        <input id="email" name="email" type="email" placeholder="Seu e-mail..." required>
+                        <label for="email">E-mail</label>
+                        <i><?php echo $email; ?></i>
                     </div>
 
                     <div class="form-group">
                         <label for="cidade">Cidade</label>
-                        <select name="cidade" id="cidade">
-                            <?php if(!$result): ?>
-                                <option value="?" selected>Cidades não encontradas.</option>
-                            <?php else: ?>
-                                <?php while($row = $result->fetch_assoc()): ?>
-                                    <option value="<?php echo $row['id']; ?>"><?php echo $row['nome']; ?></option>
-                                <?php endwhile; ?>
-                            <?php endif; ?>
-                        </select>
+                        <i><?php echo $row['nome']; ?></i>
                     </div>
 
                     <div class="form-group">

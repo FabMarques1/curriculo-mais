@@ -8,12 +8,16 @@
 <body>
     <h3>Login</h3>
 
-    <label for="usuario">Digite seu usuário</label>
-    <input name="usuario" id="usuario" type="text">
+    <form action="enviar-login.php" method="POST">
+        <label for="email">Digite seu e-mail</label>
+        <input name="email" id="email" type="email">
 
-    <br>
+        <br>
 
-    <label for="senha">Digite sua senha:</label>
-    <input name="senha" id="senha" type="password">
+        <label for="senha">Digite sua senha:</label>
+        <input name="senha" id="senha" type="password">
+
+        <button>Login</button>
+    </form>
 </body>
 </html>
