@@ -18,10 +18,11 @@ $result = $stmt->get_result();
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Currículo+ | Envio de currículo</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo+ | Envio de currículo</title>
+    <link rel="stylesheet" href="css/style.css?v=1">
+    <link rel="stylesheet" href="css/curriculo.css">
 </head>
 <body class="curriculo-page">
 
