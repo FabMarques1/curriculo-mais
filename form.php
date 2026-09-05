@@ -29,8 +29,7 @@ $row = $result->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currículo+ | Envio de currículo</title>
-    <link rel="stylesheet" href="css/style.css?v=1">
-    <link rel="stylesheet" href="css/curriculo.css">
+    <link rel="stylesheet" href="css/form.css">
 </head>
 <body class="curriculo-page">
 
