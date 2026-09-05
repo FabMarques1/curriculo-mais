@@ -8,6 +8,8 @@ if(isset($_SESSION['logado'])) {
     $sobrenome = $_SESSION['sobrenome'];
     $email = $_SESSION['email'];
     $cidade = $_SESSION['cidade'];
+} else {
+    header("Location: login.php");
 }
 
 require_once("config/database.php");
@@ -29,7 +31,9 @@ $row = $result->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currículo+ | Envio de currículo</title>
-    <link rel="stylesheet" href="css/curriculo.css">
+    <link rel="stylesheet" href="css/style.css?v=1">
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 <body class="curriculo-page">
 

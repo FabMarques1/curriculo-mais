@@ -18,6 +18,7 @@ $result = $stmt->get_result();
     <title>CURRÍCULO+ | Registro</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/registro.css">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 <body>
     <form action="enviar-registro.php" method="POST">

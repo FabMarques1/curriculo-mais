@@ -18,7 +18,9 @@ if(isset($_SESSION['logado'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculo+</title>
+    <link rel="stylesheet" href="css/style.css?v=1">
     <link rel="stylesheet" href="css/index.css?v=1">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
@@ -30,6 +32,7 @@ if(isset($_SESSION['logado'])) {
             <nav>
                 <?php if(isset($_SESSION['logado']) && $_SESSION['logado'] == True): ?>
                     <a href=""><?php echo $nome; ?></a>
+                    <a href="logout.php">Sair</a>
                 <?php else: ?>
                     <a href="login.php">
                         Entrar
@@ -160,7 +163,7 @@ if(isset($_SESSION['logado'])) {
                             as suas informações profissionais.
                         </p>
 
-                        <a href="#curriculo.html">
+                        <a href="form.php">
                             Enviar currículo →
                         </a>
                     </article>
@@ -179,7 +182,7 @@ if(isset($_SESSION['logado'])) {
                             dos analistas.
                         </p>
 
-                        <a href="#cadastrar">
+                        <a href="registro.php">
                             Saiba mais →
                         </a>
                     </article>
@@ -199,7 +202,7 @@ if(isset($_SESSION['logado'])) {
                             novos talentos.
                         </p>
 
-                        <a href="#cadastrar">
+                        <a href="form.php">
                             Enviar currículo →
                         </a>
                     </article>
@@ -279,7 +282,7 @@ if(isset($_SESSION['logado'])) {
                     encontrem o profissional que estão procurando.
                 </p>
                 <br>
-                <a href="#curriculo" class="button">
+                <a href="registro.php" class="button">
 
                     Enviar meu currículo
                 </a>

@@ -45,9 +45,9 @@ try{
             die("Usuário não encontrado.");
         }
 
-    } catch (Exception $e) {
-        echo "Erro no login." . $e->getMessage();
     }
+} catch (Exception $e) {
+    echo "Erro no login." . $e->getMessage();
 }
 
 $conn->close();
