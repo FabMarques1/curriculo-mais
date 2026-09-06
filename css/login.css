@@ -22,12 +22,10 @@ body {
     padding: 30px 20px;
 
     background:
-        radial-gradient(
-            circle at 50% 0%,
+        radial-gradient(circle at 50% 0%,
             #251437 0%,
             #11151c 35%,
-            #0b0f14 70%
-        );
+            #0b0f14 70%);
 
     color: #ffffff;
 
@@ -46,7 +44,7 @@ body {
 
 
 /* ========================================
-   CONTAINER
+   CONTAINER PRINCIPAL
 ======================================== */
 
 .login-container {
@@ -64,7 +62,7 @@ body {
 ======================================== */
 
 .logo {
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 
     color: #ffffff;
 
@@ -72,8 +70,9 @@ body {
     font-weight: 700;
 
     letter-spacing: 2px;
-
     text-align: center;
+
+    user-select: none;
 }
 
 .logo span {
@@ -82,7 +81,7 @@ body {
 
 
 /* ========================================
-   CARD
+   CARD DO LOGIN
 ======================================== */
 
 form {
@@ -93,10 +92,11 @@ form {
     background-color: rgba(18, 24, 32, 0.96);
 
     border: 1px solid #242d36;
-    border-radius: 10px;
+    border-radius: 12px;
 
     box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.45);
+        0 25px 70px rgba(0, 0, 0, 0.45),
+        0 5px 20px rgba(0, 0, 0, 0.18);
 
     animation: loginAppear 0.45s ease;
 }
@@ -115,17 +115,7 @@ form h3 {
     font-weight: 700;
 
     line-height: 1.2;
-
     letter-spacing: -1px;
-}
-
-
-/* ========================================
-   H3 FORA DO FORM
-======================================== */
-
-body > h3 {
-    display: none;
 }
 
 
@@ -161,6 +151,8 @@ form label {
 
     font-size: 13px;
     font-weight: 600;
+
+    letter-spacing: 0.1px;
 }
 
 
@@ -175,21 +167,18 @@ form input {
     display: block;
 
     padding: 0 15px;
-
     margin-bottom: 22px;
 
     background-color: #0c1117;
 
     border: 1px solid #29323b;
-
-    border-radius: 6px;
+    border-radius: 7px;
 
     outline: none;
 
     color: #ffffff;
 
     font-family: inherit;
-
     font-size: 14px;
 
     transition:
@@ -209,7 +198,7 @@ form input::placeholder {
 
 
 /* ========================================
-   HOVER
+   HOVER INPUT
 ======================================== */
 
 form input:hover {
@@ -218,7 +207,7 @@ form input:hover {
 
 
 /* ========================================
-   FOCO
+   FOCO INPUT
 ======================================== */
 
 form input:focus {
@@ -239,17 +228,16 @@ form button {
     width: 100%;
     height: 50px;
 
-    margin-top: 3px;
+    margin-top: 4px;
 
     border: none;
-    border-radius: 6px;
+    border-radius: 7px;
 
     background-color: #8c63e6;
 
     color: #0b0710;
 
     font-family: inherit;
-
     font-size: 14px;
     font-weight: 700;
 
@@ -269,21 +257,33 @@ form button {
 form button:hover {
     background-color: #ffffff;
 
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 
     box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.3);
+        0 8px 22px rgba(0, 0, 0, 0.30);
 }
 
 
 /* ========================================
-   ACTIVE
+   BOTÃO PRESSIONADO
 ======================================== */
 
 form button:active {
     transform: translateY(0);
 
     box-shadow: none;
+}
+
+
+/* ========================================
+   FOCO ACESSÍVEL
+======================================== */
+
+form button:focus-visible {
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px rgba(140, 99, 230, 0.25);
 }
 
 
@@ -302,6 +302,7 @@ form button:active {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
 
@@ -321,12 +322,14 @@ form button:active {
 
     form {
         padding: 34px;
+        border-radius: 10px;
     }
+
 }
 
 
 /* ========================================
-   CELULARES PEQUENOS
+   CELULARES
 ======================================== */
 
 @media (max-width: 400px) {
@@ -335,10 +338,16 @@ form button:active {
         padding: 20px 12px;
     }
 
+    .logo {
+        margin-bottom: 24px;
+
+        font-size: 19px;
+    }
+
     form {
         padding: 28px 22px;
 
-        border-radius: 8px;
+        border-radius: 9px;
     }
 
     form h3 {
@@ -355,4 +364,46 @@ form button:active {
     form button {
         height: 46px;
     }
+
+}
+
+
+/* ========================================
+   TELAS COM POUCA ALTURA
+======================================== */
+
+@media (max-height: 650px) {
+
+    body {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .logo {
+        margin-bottom: 18px;
+    }
+
+    form {
+        padding-top: 28px;
+        padding-bottom: 28px;
+    }
+
+}
+
+
+/* ========================================
+   REDUZIR ANIMAÇÕES
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    form {
+        animation: none;
+    }
+
+    form input,
+    form button {
+        transition: none;
+    }
+
 }
