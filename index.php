@@ -39,6 +39,7 @@ if(isset($_SESSION['logado'])) {
                     <a href="registro.php">
                         Cadastrar
                     </a>
+                <a href="ver-curriculos.php">TESTE DE VER CURRÍCULO</a>
                 <?php endif; ?>
             </nav>
         </div>
