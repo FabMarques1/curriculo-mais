@@ -18,7 +18,7 @@ jobs:
           server: ${{ secrets.servidor }}
           username: ${{ secrets.usuario }}
           password: ${{ secrets.senha }}
-          server-dir: /htdocs/
+          server-dir: /curriculomais.page.gd/htdocs/
           protocol: ftps
           port: 21 
           exclude: |
