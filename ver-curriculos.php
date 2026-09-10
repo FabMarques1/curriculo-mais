@@ -1,12 +1,19 @@
 <?php
 
-if($_SERVER['REQUEST_METHOD'] === "GET"){
-    $filtro_vaga = $_GET['filtro_instituicao'] ?? '';
+require_once('config/database.php');
 
-    if (empty($filtro_vaga)){
-        $isDisabled = "disabled";
-    } else {
+$result = null;
+$isDisabled = "disabled";
+
+if ($_SERVER['REQUEST_METHOD'] === "GET") {
+
+    if (isset($_GET['filtro_vaga'])) {
         $isDisabled = "";
+
+        $sql = "SELECT id, nome FROM tbl_instituicao";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
     }
 }
 
@@ -29,10 +36,12 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){
         </select>
 
         <label for="filtro_instituicao">Instituição</label>
-        <select name="filtro_instituicao" id="filtro_instituicao">>
-            <option value="instituicao1">Instituição 1</option>
-            <option value="instituicao2">Instituição 2</option>
-            <option value="instituicao3">Instituição 3</option>
+        <select name="filtro_instituicao" id="filtro_instituicao" <?php echo $isDisabled; ?>>
+            <?php if ($result): ?>
+                <?php while($row = $result->fetch_assoc()): ?>
+                    <option value="<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['nome']); ?></option>
+                <?php endwhile; ?>
+            <?php endif; ?>
         </select>
 
         <label for="filtro_vaga">Filtrar por vaga <i>(se instituição for filtrada)</i>:</label>
@@ -41,11 +50,9 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){
             <option value="vaga2">Vaga 2</option>
         </select>
 
-        
-
         <button>Buscar</button>
     </form>
-    
+
     <table align="center" border="1" width="1200px">
         <tr>
             <th>NOME</th>
@@ -54,14 +61,6 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){
             <th>VAGA APLICADA</th>
             <th>RESUMO PROFISSIONAL</th>
             <th>CURRÍCULO</th>
-        </tr>
-        <tr>
-            <td>Nome do usuário</td>
-            <td>Sobrenome do usuário</td>
-            <td>Email</td>
-            <th>Vaga aplicada | Instituição</th>
-            <th>Resumo profissional com limite de caracteres e palavras por linha</th>
-            <th><a href="curriculos/">Acessar currículo</a></th>
         </tr>
         <tr>
             <td>Fabricio</td>
