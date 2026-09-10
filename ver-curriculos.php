@@ -1,7 +1,7 @@
 <?php
 
 if($_SERVER['REQUEST_METHOD'] === "GET"){
-    $filtro_vaga = $_GET['filtro_vaga'] ?? '';
+    $filtro_vaga = $_GET['filtro_instituicao'] ?? '';
 
     if (empty($filtro_vaga)){
         $isDisabled = "disabled";
@@ -28,18 +28,20 @@ if($_SERVER['REQUEST_METHOD'] === "GET"){
             <option value="ASC">Crescente</option>
         </select>
 
-        <label for="filtro_vaga">Filtrar por vaga:</label>
-        <select name="filtro_vaga" id="filtro_vaga">
-            <option value="vaga1">Vaga 1</option>
-            <option value="vaga2">Vaga 2</option>
-        </select>
-
-        <label for="filtro_instituicao">Instituição <i>(se vaga for filtrada)</i>:</label>
-        <select name="filtro_instituicao" id="filtro_instituicao" <?php echo $isDisabled; ?>>
+        <label for="filtro_instituicao">Instituição</label>
+        <select name="filtro_instituicao" id="filtro_instituicao">>
             <option value="instituicao1">Instituição 1</option>
             <option value="instituicao2">Instituição 2</option>
             <option value="instituicao3">Instituição 3</option>
         </select>
+
+        <label for="filtro_vaga">Filtrar por vaga <i>(se instituição for filtrada)</i>:</label>
+        <select name="filtro_vaga" id="filtro_vaga" <?php echo $isDisabled; ?>>
+            <option value="vaga1">Vaga 1</option>
+            <option value="vaga2">Vaga 2</option>
+        </select>
+
+        
 
         <button>Buscar</button>
     </form>
