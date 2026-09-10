@@ -6,14 +6,14 @@ on:
 
 jobs:
   web-deploy:
-      name: 🎉 AutoDesplegado
+      name: Deploy
       runs-on: ubuntu-latest
       steps:
-      - name: Enviando o código para o servidor
-        uses: actions/checkout@v3
+      - name: Verificando pendências ou erros
+        uses: actions/checkout@v4.1.1
   
-      - name: Deploy feito com sucesso!
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Sincronizando arquivos no servidor
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ${{ secrets.servidor }}
           username: ${{ secrets.usuario }}
