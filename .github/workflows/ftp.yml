@@ -17,7 +17,7 @@ jobs:
         with:
           server: ${{ secrets.servidor }}
           username: ${{ secrets.usuario }}
-          password: ${{ secrets.contraseña }}
+          password: ${{ secrets.senha }}
           server-dir: /htdocs/
           protocol: ftps
           port: 21 
