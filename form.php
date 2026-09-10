@@ -10,9 +10,8 @@ if(isset($_SESSION['logado'])) {
     $cidade = $_SESSION['cidade'];
 } else {
     header("Location: login.php");
+    exit;
 }
-
-require_once("config/database.php");
 
 $query = "SELECT nome FROM tbl_cidade WHERE id = ?";
 $stmt = $conn->prepare($query);
@@ -20,8 +19,13 @@ $stmt->bind_param("i", $cidade);
 $stmt->execute();
 
 $result = $stmt->get_result();
-
 $row = $result->fetch_assoc();
+
+$queryVagas = "SELECT id, titulo FROM tbl_vaga";
+$stmtVagas = $conn->prepare($queryVagas);
+$stmtVagas->execute();
+
+$resultVagas = $stmtVagas->get_result();
 
 ?>
 
@@ -74,28 +78,37 @@ $row = $result->fetch_assoc();
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nome">Primeiro nome</label>
-                            <i><?php echo $nome; ?></i>
+                            <i><?php echo htmlspecialchars($nome); ?></i>
                         </div>
 
                         <div class="form-group">
                             <label for="sobrenome">Sobrenome</label>
-                            <i><?php echo $sobrenome; ?></i>
+                            <i><?php echo htmlspecialchars($sobrenome); ?></i>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="email">E-mail</label>
-                        <i><?php echo $email; ?></i>
+                        <i><?php echo htmlspecialchars($email); ?></i>
                     </div>
 
                     <div class="form-group">
                         <label for="cidade">Cidade</label>
-                        <i><?php echo $row['nome']; ?></i>
+                        <i><?php echo htmlspecialchars($row['nome'] ?? ''); ?></i>
                     </div>
 
                     <div class="form-group">
                         <label for="resumoProfissional">Resumo profissional</label>
                         <textarea name="resumoProfissional" id="resumoProfissional" placeholder="Conte-nos um pouco sobre você..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vaga">Vagas</label>
+                        <select name="vaga" id="vaga">
+                            <?php while($row = $resultVagas->fetch_assoc()): ?>
+                                <option value="<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['titulo']); ?></option>
+                            <?php endwhile; ?>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -132,8 +145,7 @@ $row = $result->fetch_assoc();
 </html>
 
 <?php
-
 $stmt->close();
+$stmtVagas->close();
 $conn->close();
-
 ?>
