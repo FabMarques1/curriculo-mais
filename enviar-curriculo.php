@@ -10,6 +10,7 @@ require_once("config/database.php");
 $idUsuario = $_SESSION['id'];
 $resumoProfissional = $_POST['resumoProfissional'];
 $curriculo = $_FILES['curriculo'];
+$idVaga = $_POST['vaga'];
 
 try{
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($curriculo) && $curriculo['error'] === UPLOAD_ERR_OK) {
@@ -46,10 +47,10 @@ try{
 
         if (move_uploaded_file($caminhoTemp, $caminhoFinal)) {
             
-            $sql = "INSERT INTO tbl_curriculo (resumo_profissional, curriculo, id_usuario) VALUES
-                    (?, ?, ?)";
+            $sql = "INSERT INTO tbl_curriculo (resumo_profissional, curriculo, id_usuario, id_vaga) VALUES
+                    (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssi", $resumoProfissional, $caminhoFinal, $idUsuario);
+            $stmt->bind_param("ssii", $resumoProfissional, $caminhoFinal, $idUsuario, $idVaga);
 
             if ($stmt->execute()) {
                 # "Currículo enviado com sucesso!";
