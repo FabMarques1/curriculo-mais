@@ -2,6 +2,7 @@
 session_start();
 
 require_once('config/database.php');
+header('Content-Type: text/html; charset=utf-8');
 
 if($_SESSION['is_rh'] == 0) {
     header('Location: index.php');
