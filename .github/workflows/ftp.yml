@@ -25,3 +25,4 @@ jobs:
             **/.git*
             **/.git*/**
             **/node_modules/**
+            **/config/database.php
