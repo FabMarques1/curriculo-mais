@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 
 require_once("config/database.php");
@@ -53,7 +49,6 @@ try{
             $stmt->bind_param("ssii", $resumoProfissional, $caminhoFinal, $idUsuario, $idVaga);
 
             if ($stmt->execute()) {
-                # "Currículo enviado com sucesso!";
                 header("Location: index.php");
             } else {
                 echo "Erro ao salvar informações no banco de dados.";
