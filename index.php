@@ -7,6 +7,7 @@ if(isset($_SESSION['logado'])) {
     $sobrenome = $_SESSION['sobrenome'];
     $email = $_SESSION['email'];
     $cidade = $_SESSION['cidade'];
+    $isRH = $_SESSION['is_rh'];
 }
 
 ?>
@@ -31,6 +32,11 @@ if(isset($_SESSION['logado'])) {
             <nav>
                 <?php if(isset($_SESSION['logado']) && $_SESSION['logado'] == True): ?>
                     <a href=""><?php echo $nome; ?></a>
+
+                    <?php if($isRH == 1): ?>
+                        <a href="ver-curriculos.php">Área de candidatos</a>
+                    <?php endif; ?>
+
                     <a href="logout.php">Sair</a>
                 <?php else: ?>
                     <a href="login.php">
@@ -39,7 +45,6 @@ if(isset($_SESSION['logado'])) {
                     <a href="registro.php">
                         Cadastrar
                     </a>
-                <a href="ver-curriculos.php">TESTE DE VER CURRÍCULO</a>
                 <?php endif; ?>
             </nav>
         </div>
