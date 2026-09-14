@@ -12,7 +12,7 @@ $senha = $_POST['senha'];
 
 try{
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $query = "SELECT id, nome, sobrenome, email, senha, id_cidade FROM tbl_usuario WHERE email = ?";
+        $query = "SELECT id, nome, sobrenome, email, senha, is_rh, id_cidade FROM tbl_usuario WHERE email = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $email);
 
@@ -35,6 +35,7 @@ try{
                     $_SESSION['sobrenome'] = $row['sobrenome'];
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['cidade'] = $row['id_cidade'];
+                    $_SESSION['is_rh'] = $row['is_rh'];
 
                 } else {
                     die("Usuário ou senha incorretos!");
