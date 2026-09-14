@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `curriculo_mais_db`.`tbl_usuario` (
   `sobrenome` VARCHAR(75) NULL DEFAULT NULL,
   `email` VARCHAR(80) NOT NULL,
   `senha` CHAR(64) NOT NULL,
+  `is_rh` BOOLEAN NOT NULL DEFAULT 0 CHECK (`is_rh` BETWEEN 0 AND 1),
   `id_cidade` TINYINT UNSIGNED NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email` (`email` ASC) VISIBLE,
