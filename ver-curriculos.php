@@ -52,6 +52,7 @@ $resultInfo = $stmt3->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CURRÍCULO+ | Currículos submetidos</title>
+    <link rel="stylesheet" href="css/verCurriculo.css">
 </head>
 <body>
     <h1>Currículos</h1>
@@ -88,12 +89,12 @@ $resultInfo = $stmt3->get_result();
         <?php if ($resultInfo && $resultInfo->num_rows > 0): ?>
             <?php while ($rowInfo = $resultInfo->fetch_assoc()): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($rowInfo['nome']); ?></td>
-                    <td><?php echo htmlspecialchars($rowInfo['sobrenome']); ?></td>
-                    <td><?php echo htmlspecialchars($rowInfo['email']); ?></td>
-                    <td><?php echo htmlspecialchars($rowInfo['titulo']); ?></td>
-                    <td><?php echo htmlspecialchars($rowInfo['resumo_profissional']); ?></td>
-                    <td><a href="<?php echo htmlspecialchars($rowInfo['curriculo']); ?>">Acessar currículo</a></td>
+                    <td data-label="Nome"><?php echo htmlspecialchars($rowInfo['nome']); ?></td>
+                    <td data-label="Sobrenome"><?php echo htmlspecialchars($rowInfo['sobrenome']); ?></td>
+                    <td data-label="Email"><?php echo htmlspecialchars($rowInfo['email']); ?></td>
+                    <td data-label="Vaga"><?php echo htmlspecialchars($rowInfo['titulo']); ?></td>
+                    <td data-label="Resumo"><?php echo htmlspecialchars($rowInfo['resumo_profissional']); ?></td>
+                    <td data-label="Currículo"><a href="<?php echo htmlspecialchars($rowInfo['curriculo']); ?>">Acessar currículo</a></td>
                 </tr>
             <?php endwhile; ?>
         <?php else: ?>
