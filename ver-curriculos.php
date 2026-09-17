@@ -4,7 +4,7 @@ session_start();
 require_once('config/database.php');
 header('Content-Type: text/html; charset=utf-8');
 
-if($_SESSION['is_rh'] == 0) {
+if($_SESSION['tipo_usuario'] == 2) {
     header('Location: index.php');
 }
 
