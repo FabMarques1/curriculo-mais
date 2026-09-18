@@ -1,0 +1,28 @@
+name: FTPUpload
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  web-deploy:
+      name: Deploy
+      runs-on: ubuntu-latest
+      steps:
+      - name: Verificando pendências ou erros
+        uses: actions/checkout@v4.1.1
+  
+      - name: Sincronizando arquivos no servidor
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.servidor }}
+          username: ${{ secrets.usuario }}
+          password: ${{ secrets.senha }}
+          server-dir: /curriculomais.page.gd/htdocs/
+          protocol: ftps
+          port: 21 
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/config/database.php
