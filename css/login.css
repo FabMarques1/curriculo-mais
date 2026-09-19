@@ -107,7 +107,7 @@ form {
 ======================================== */
 
 form h3 {
-    margin-bottom: 8px;
+    margin-bottom: 20px;
 
     color: #ffffff;
 
@@ -124,8 +124,6 @@ form h3 {
 ======================================== */
 
 form::before {
-    content: "Entre na sua conta para continuar.";
-
     display: block;
 
     margin-bottom: 32px;

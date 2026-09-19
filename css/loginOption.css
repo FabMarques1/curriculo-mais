@@ -68,16 +68,13 @@ body {
 ======================================== */
 
 .title {
+    
     margin-top: 0;
     margin-bottom: 32px;
 
     font-size: 19px;
     font-weight: 500;
     color: #8e9aa5;
-    text-decoration: underline;
-
-
-    text-transform: lowercase;
 }
 
 
@@ -314,6 +311,7 @@ button:active {
         width: 100%;
         padding: 28px 24px;
         border-radius: 5px;
+        margin-bottom:30px ;
     }
 
     form:hover{
@@ -336,9 +334,17 @@ button:active {
     }
 
     .title {
-        font-size: 16px;
+        font-size: 20px;
         margin-bottom: 24px;
     }
+
+    hr{
+        display: none;
+    }
+
+    h1, p{
+        text-align: left;
+        }
 }
 
 
