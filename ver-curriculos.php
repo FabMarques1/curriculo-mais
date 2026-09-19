@@ -4,7 +4,7 @@ session_start();
 require_once('config/database.php');
 header('Content-Type: text/html; charset=utf-8');
 
-if($_SESSION['tipo_usuario'] != 2) {
+if($_SESSION['tipo_usuario'] != "recrutador") {
     header('Location: index.php');
 }
 
@@ -94,7 +94,7 @@ $resultInfo = $stmt3->get_result();
                     <td data-label="Email"><?php echo htmlspecialchars($rowInfo['email']); ?></td>
                     <td data-label="Vaga"><?php echo htmlspecialchars($rowInfo['titulo']); ?></td>
                     <td data-label="Resumo"><?php echo htmlspecialchars($rowInfo['resumo_profissional']); ?></td>
-                    <td data-label="Currículo"><a href="<?php echo htmlspecialchars($rowInfo['curriculo']); ?>">Acessar currículo</a></td>
+                    <td data-label="Currículo"><a href="<?php echo htmlspecialchars($rowInfo['curriculo']); ?>" target="_blank">Acessar currículo</a></td>
                 </tr>
             <?php endwhile; ?>
         <?php else: ?>
