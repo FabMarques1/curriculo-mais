@@ -4,7 +4,7 @@
     require_once('config/database.php');
     header('Content-Type: text/html; charset=utf-8');
 
-if($_SESSION['tipo_usuario'] != 2) {
+if($_SESSION['tipo_usuario'] != "recrutador") {
     header('Location: index.php');
 }
 
