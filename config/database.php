@@ -1,9 +1,9 @@
 <?php
 
-$host = "host";
+$host = "localhost";
 $user = "root";
-$password = "senha";
-$database = "curriculo_mais_db";
+$password = "&tec77@info!";
+$database = "curriculo_mais_db_2";
 
 try{
     $conn = new MySQLi($host, $user, $password, $database);
