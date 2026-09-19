@@ -4,9 +4,9 @@
     require_once('config/database.php');
     header('Content-Type: text/html; charset=utf-8');
 
-    if($_SESSION['tipo_usuario'] != 2) {
-        header('Location: index.php');
-    }
+if($_SESSION['tipo_usuario'] != "recrutador") {
+    header('Location: index.php');
+}
 
     $vagas = "SELECT id, titulo FROM tbl_vaga";
     $stmt1 = $conn->prepare($vagas);
@@ -77,34 +77,34 @@
             <button>Buscar</button>
         </form>
 
-        <table align="center" border="1" width="1200px">
-            <tr>
-                <th>NOME</th>
-                <th>SOBRENOME</th>
-                <th>EMAIL</th>
-                <th>VAGA APLICADA</th>
-                <th>RESUMO PROFISSIONAL</th>
-                <th>CURRÍCULO</th>
-            </tr>
-            <?php if ($resultInfo && $resultInfo->num_rows > 0): ?>
-                <?php while ($rowInfo = $resultInfo->fetch_assoc()): ?>
-                    <tr>
-                        <td data-label="Nome"><?php echo htmlspecialchars($rowInfo['nome']); ?></td>
-                        <td data-label="Sobrenome"><?php echo htmlspecialchars($rowInfo['sobrenome']); ?></td>
-                        <td data-label="Email"><?php echo htmlspecialchars($rowInfo['email']); ?></td>
-                        <td data-label="Vaga"><?php echo htmlspecialchars($rowInfo['titulo']); ?></td>
-                        <td data-label="Resumo"><?php echo htmlspecialchars($rowInfo['resumo_profissional']); ?></td>
-                        <td data-label="Currículo"><a href="<?php echo htmlspecialchars($rowInfo['curriculo']); ?>">Acessar currículo</a></td>
-                    </tr>
-                <?php endwhile; ?>
-            <?php else: ?>
+    <table align="center" border="1" width="1200px">
+        <tr>
+            <th>NOME</th>
+            <th>SOBRENOME</th>
+            <th>EMAIL</th>
+            <th>VAGA APLICADA</th>
+            <th>RESUMO PROFISSIONAL</th>
+            <th>CURRÍCULO</th>
+        </tr>
+        <?php if ($resultInfo && $resultInfo->num_rows > 0): ?>
+            <?php while ($rowInfo = $resultInfo->fetch_assoc()): ?>
                 <tr>
-                    <td colspan="6" align="center">Nenhum currículo encontrado.</td>
+                    <td data-label="Nome"><?php echo htmlspecialchars($rowInfo['nome']); ?></td>
+                    <td data-label="Sobrenome"><?php echo htmlspecialchars($rowInfo['sobrenome']); ?></td>
+                    <td data-label="Email"><?php echo htmlspecialchars($rowInfo['email']); ?></td>
+                    <td data-label="Vaga"><?php echo htmlspecialchars($rowInfo['titulo']); ?></td>
+                    <td data-label="Resumo"><?php echo htmlspecialchars($rowInfo['resumo_profissional']); ?></td>
+                    <td data-label="Currículo"><a href="<?php echo htmlspecialchars($rowInfo['curriculo']); ?>" target="_blank">Acessar currículo</a></td>
                 </tr>
-            <?php endif; ?>
-        </table>
-    </body>
-    </html>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <tr>
+                <td colspan="6" align="center">Nenhum currículo encontrado.</td>
+            </tr>
+        <?php endif; ?>
+    </table>
+</body>
+</html>
 
     <?php
     $stmt3->close();
