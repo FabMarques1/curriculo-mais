@@ -29,8 +29,6 @@
                <h1>Usuário</h1>
                <hr>
                <p>Faça login aqui e envie seu curriculo!</p>
-               <hr>
-               <p>Faça login aqui e envie seu curriculo!</p>
             </label>
 
             <button type="submit">
@@ -41,8 +39,6 @@
         <form action="login.php?type=recrutador" method="POST">
             <label for="recrutador">
                 <h1>Recrutador</h1>
-                <hr>
-                <p>Avalie curriculos cadastrados.</p>
                 <hr>
                 <p>Avalie curriculos cadastrados.</p>
             </label>
