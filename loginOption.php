@@ -23,10 +23,12 @@
             CURRICULO<span>+</span>
         </div>
 
-        <h1 class="title">quem é você?</h1>
-        <form action="login.php" method="POST">          
+        <h1 class="title">Quem é você?</h1>
+        <form action="login.php?type=usuario" method="POST">          
             <label for="usuario">
                <h1>Usuário</h1>
+               <hr>
+               <p>Faça login aqui e envie seu curriculo!</p>
             </label>
 
             <button type="submit">
@@ -34,9 +36,11 @@
             </button>
 
         </form>
-        <form action="login.php" method="POST">
+        <form action="login.php?type=recrutador" method="POST">
             <label for="recrutador">
                 <h1>Recrutador</h1>
+                <hr>
+                <p>Avalie curriculos cadastrados.</p>
             </label>
 
        

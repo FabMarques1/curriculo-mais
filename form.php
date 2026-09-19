@@ -9,7 +9,7 @@ if(isset($_SESSION['logado'])) {
     $email = $_SESSION['email'];
     $cidade = $_SESSION['cidade'];
 } else {
-    header("Location: login.php");
+    header("Location: loginOption.php");
     exit;
 }
 
