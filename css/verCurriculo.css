@@ -350,3 +350,105 @@ table td[colspan] {
         padding: 18px;
     }
 }
+
+/* ========================================
+   PAGINAÇÃO
+======================================== */
+
+.paginacao {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 28px auto 0;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+
+/* PÁGINAS E SETAS */
+
+.paginacao a,
+.paginacao span {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 42px;
+    height: 40px;
+    padding: 0 13px;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: none;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.paginacao > *:last-child {
+    border-right: none;
+}
+
+
+/* HOVER */
+
+.paginacao a:hover {
+    background-color: var(--accent-soft);
+    color: var(--accent);
+}
+
+
+/* PÁGINA ATUAL */
+
+.paginacao span {
+    background-color: var(--accent);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   SETAS
+======================================== */
+
+.paginacao .seta {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.paginacao .seta:hover {
+    background-color: var(--accent-soft);
+    color: var(--accent);
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 500px) {
+
+    .paginacao {
+        margin-top: 22px;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .paginacao a,
+    .paginacao span {
+        min-width: 36px;
+        height: 36px;
+        padding: 0 10px;
+        font-size: 13px;
+    }
+
+    .paginacao .seta {
+        font-size: 17px;
+    }
+}
