@@ -1,4 +1,25 @@
-<h1 align="center">Curriculo+</h1>
-<h1 align="center">Projeto voltado a envio de currículos!</h1>
-<h6 align="center">Era para ser apenas uma página web simples...</h6>
+# Curriculo+
 
+Projeto voltado ao envio de currículos, desenvolvido na aula de Programação de Computadores II.
+
+Demo: [curriculomais.page.gd](https://curriculomais.page.gd)
+
+## Sobre o projeto
+
+O Curriculo+ é uma aplicação web onde candidatos podem se cadastrar, fazer login e enviar seus currículos para vagas disponíveis. O sistema permite escolher uma vaga, preencher um resumo profissional e anexar o currículo em PDF, que fica associado ao perfil do usuário no banco de dados.
+
+## Funcionalidades
+
+- Cadastro e login de usuários
+- Seleção de cidade vinculada ao perfil
+- Listagem de vagas disponíveis
+- Envio de currículo em PDF com validação de tipo e tamanho
+- Visualização dos currículos enviados
+- Tratamento de erros com páginas dedicadas
+
+## Tecnologias utilizadas
+
+- PHP
+- MySQL
+- HTML e CSS
+- JavaScript
