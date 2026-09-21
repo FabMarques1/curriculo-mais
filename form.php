@@ -117,7 +117,7 @@ $resultVagas = $stmtVagas->get_result();
                             <div class="file-icon">&#128196;</div>
                             <div>
                                 <strong>Clique ou arraste seu arquivo aqui</strong>
-                                <p>PDF, DOC ou DOCX até 2MB</p>
+                                <p>PDF até 2MB</p>
                             </div>
                             <input name="curriculo" id="curriculo" type="file" required>
                         </div>

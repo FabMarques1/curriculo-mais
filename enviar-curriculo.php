@@ -24,21 +24,28 @@ try{
 
         $tamanhoMax = 2 * 1024 * 1024;
 
-        if ($extensao !== 'pdf') {
-            die("Erro: Apenas arquivos com a extensão .PDF são permitidos.");
+        $mimesPermitidos = [
+            'pdf'  => 'application/pdf'
+        ];
+
+        if (!array_key_exists($extensao, $mimesPermitidos)) {
+            header("Location: error.php?error=103");
+            exit;
         }
 
         $tipoMime = mime_content_type($caminhoTemp);
-        if ($tipoMime !== 'application/pdf') {
-            die("Erro: O conteúdo do arquivo não é um PDF válido.");
+        if ($tipoMime !== $mimesPermitidos[$extensao]) {
+            header("Location: error.php?error=103");
+            exit;
         }
 
         if ($tamanho > $tamanhoMax) {
-            die("Erro: O arquivo excede o limite máximo permitido de 2 MB.");
+            header("Location: error.php?error=104");
+            exit;
         }
 
         $hash16       = bin2hex(random_bytes(8));
-        $novoNome     = $hash16 . '.pdf';
+        $novoNome     = $hash16 . '.' . $extensao;
         $caminhoFinal = $pastaDestino . $novoNome;
 
         if (move_uploaded_file($caminhoTemp, $caminhoFinal)) {
@@ -51,17 +58,20 @@ try{
             if ($stmt->execute()) {
                 header("Location: index.php");
             } else {
-                echo "Erro ao salvar informações no banco de dados.";
+                header("Location: error.php?error=500");
+                exit;
             }
 
             $stmt->close();
 
         } else {
-            echo "Erro ao mover o arquivo para a pasta de destino.";
+            header("Location: error.php?error=500");
+            exit;
         }
 
     } else {
-        echo "Por favor, selecione um arquivo válido.";
+        header("Location: error.php?error=103");
+        exit;
     }
 } catch (Exception $e) {
     echo "Erro ao enviar o seu currículo: " . $e->getMessage();

@@ -47,12 +47,14 @@ try{
                     $_SESSION['tipo_usuario'] = strtolower($row['tipo']);
 
                 } else {
-                    die("Usuário ou senha incorretos!");
+                    header("Location: error.php?error=201&type=" . $tipo);
+                    exit;
                 }
             }
 
         } else {
-            die("Usuário não encontrado.");
+            header("Location: error.php?error=101&type=" . $tipo);
+            exit;   
         }
 
     }

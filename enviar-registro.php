@@ -31,8 +31,10 @@ try{
             
             if ($stmt->execute()) {
                 header("Location: index.php");
+                exit;
             } else {
-                die("Erro ao cadastrar usuário.");
+                header("Location: error.php?error=202");
+                exit;
             }
 
             $stmt->close();
