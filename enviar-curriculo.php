@@ -29,19 +29,16 @@ try{
         ];
 
         if (!array_key_exists($extensao, $mimesPermitidos)) {
-            header("Location: error.php?error=103");
-            exit;
+            die("Tipo de arquivo inválido.");
         }
 
         $tipoMime = mime_content_type($caminhoTemp);
         if ($tipoMime !== $mimesPermitidos[$extensao]) {
-            header("Location: error.php?error=103");
-            exit;
+            die("Tipo de arquivo inválido.");
         }
 
         if ($tamanho > $tamanhoMax) {
-            header("Location: error.php?error=104");
-            exit;
+            die("Tamanho de arquivo excedido, permitido apenas 2MB.");
         }
 
         $hash16       = bin2hex(random_bytes(8));
@@ -58,23 +55,20 @@ try{
             if ($stmt->execute()) {
                 header("Location: index.php");
             } else {
-                header("Location: error.php?error=500");
-                exit;
+                die("Erro ao enviar currículo, contate o suporte.");
             }
 
             $stmt->close();
 
         } else {
-            header("Location: error.php?error=500");
-            exit;
+            die("Erro ao enviar currículo, contate o suporte.");
         }
 
     } else {
-        header("Location: error.php?error=103");
-        exit;
+        die("Erro ao enviar currículo, contate o suporte.");
     }
 } catch (Exception $e) {
-    echo "Erro ao enviar o seu currículo: " . $e->getMessage();
+    echo "Erro ao enviar currículo, contate o suporte.";
 }
 
 $conn->close();

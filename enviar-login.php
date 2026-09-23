@@ -7,23 +7,14 @@ if(isset($_SESSION['login'])) {
     header("Location: index.php");
 }
 
-$tipos = ['usuario', 'recrutador'];
-
-if (isset($_GET['type']) && in_array($_GET['type'], $tipos, true)) {
-    $tipo = $_GET['type'];
-} else {
-    header("Location: index.php");
-    exit;
-}
-
 $email = strtolower($_POST['email']);
 $senha = $_POST['senha'];
 
 try{
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $query = "SELECT u.id, u.nome, u.sobrenome, u.email, u.senha, t.nome AS tipo, u.id_cidade FROM tbl_usuario u INNER JOIN tbl_tipo_usuario t ON u.tipo_usuario = t.id WHERE u.email = ? AND t.nome = ?";
+        $query = "SELECT u.id, u.nome, u.sobrenome, u.email, u.senha, t.id AS tipo, u.id_cidade FROM tbl_usuario u INNER JOIN tbl_tipo_usuario t ON u.tipo_usuario = t.id WHERE u.email = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("ss", $email, $tipo);
+        $stmt->bind_param("s", $email);
 
         $stmt->execute();
 
@@ -44,22 +35,20 @@ try{
                     $_SESSION['sobrenome'] = $row['sobrenome'];
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['cidade'] = $row['id_cidade'];
-                    $_SESSION['tipo_usuario'] = strtolower($row['tipo']);
+                    $_SESSION['tipo_usuario'] = $row['tipo'];
 
                 } else {
-                    header("Location: error.php?error=201&type=" . $tipo);
-                    exit;
+                    die("Usuário ou senha incorretos!");
                 }
             }
 
         } else {
-            header("Location: error.php?error=101&type=" . $tipo);
-            exit;   
+            die("Usuário ou senha incorretos!");
         }
 
     }
 } catch (Exception $e) {
-    echo "Erro no login." . $e->getMessage();
+    echo "Erro no login, contate o suporte.";
 }
 
 $conn->close();

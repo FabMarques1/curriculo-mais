@@ -33,13 +33,13 @@ if(isset($_SESSION['logado'])) {
                 <?php if(isset($_SESSION['logado']) && $_SESSION['logado'] == True): ?>
                     <a href=""><?php echo $nome; ?></a>
 
-                    <?php if($tipoUsuario == "recrutador"): ?>
+                    <?php if($tipoUsuario === 2): ?>
                         <a href="ver-curriculos.php">Área de candidatos</a>
                     <?php endif; ?>
 
                     <a href="logout.php">Sair</a>
                 <?php else: ?>
-                    <a href="loginOption.php">
+                    <a href="login.php">
                         Entrar
                     </a>
                     <a href="registro.php">

@@ -1,16 +1,3 @@
-<?php
-
-$tipos = ['usuario', 'recrutador'];
-
-if (isset($_GET['type']) && in_array($_GET['type'], $tipos, true)) {
-    $tipo = $_GET['type'];
-} else {
-    header("Location: index.php");
-    exit;
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -36,7 +23,7 @@ if (isset($_GET['type']) && in_array($_GET['type'], $tipos, true)) {
             CURRICULO<span>+</span>
         </div>
 
-        <form action="enviar-login.php?type=<?php echo $tipo; ?>" method="POST">
+        <form action="enviar-login.php" method="POST">
             <h3>Bem-vindo de volta!</h3>
             <label for="email">
                 Digite seu e-mail

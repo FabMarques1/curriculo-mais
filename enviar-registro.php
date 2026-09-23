@@ -33,8 +33,7 @@ try{
                 header("Location: index.php");
                 exit;
             } else {
-                header("Location: error.php?error=202");
-                exit;
+                die("Erro ao registrar, contate o suporte.");
             }
 
             $stmt->close();
@@ -42,7 +41,7 @@ try{
         }
     }
 } catch (Exception $e) {
-    die("Houve um problema com o envio de informações: " . $e->getMessage());
+    die("Erro ao registrar, contate o suporte.");
 }
 
 
