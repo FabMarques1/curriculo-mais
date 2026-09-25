@@ -3,16 +3,23 @@ session_start();
 
 require_once("config/database.php");
 
-if(isset($_SESSION['login'])) {
-    header("Location: index.php");
-}
-
 $email = strtolower($_POST['email']);
 $senha = $_POST['senha'];
 
 try{
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $query = "SELECT u.id, u.nome, u.sobrenome, u.email, u.senha, t.id AS tipo, u.id_cidade FROM tbl_usuario u INNER JOIN tbl_tipo_usuario t ON u.tipo_usuario = t.id WHERE u.email = ?";
+        $query = "SELECT 
+                    u.id, 
+                    u.nome, 
+                    u.sobrenome, 
+                    u.data_nascimento, 
+                    u.email, 
+                    u.senha, 
+                    t.id AS tipo 
+                FROM tbl_usuario u 
+                INNER JOIN tbl_tipo_usuario t 
+                    ON u.tipo_usuario = t.id WHERE u.email = ?";
+
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $email);
 
@@ -29,12 +36,12 @@ try{
 
                 if($senhaHash === $row['senha']) {
 
-                    $_SESSION['logado'] = True;
+                    $_SESSION['login'] = True;
                     $_SESSION['id'] = $row['id'];
                     $_SESSION['nome'] = $row['nome'];
+                    $_SESSION['data_nascimento'] = $row['data_nascimento'];
                     $_SESSION['sobrenome'] = $row['sobrenome'];
                     $_SESSION['email'] = $row['email'];
-                    $_SESSION['cidade'] = $row['id_cidade'];
                     $_SESSION['tipo_usuario'] = $row['tipo'];
 
                 } else {
