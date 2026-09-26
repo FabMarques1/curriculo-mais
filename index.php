@@ -6,7 +6,6 @@ if(isset($_SESSION['logado'])) {
     $nome = $_SESSION['nome'];
     $sobrenome = $_SESSION['sobrenome'];
     $email = $_SESSION['email'];
-    $cidade = $_SESSION['cidade'];
     $tipoUsuario = $_SESSION['tipo_usuario'];
 }
 

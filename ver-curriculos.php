@@ -54,6 +54,7 @@ $totalPaginas = ceil($totalRegistros / $porPagina);
 
 
 $informacoes = "SELECT
+                    u.id AS id_usuario,
                     u.nome,
                     u.sobrenome,
                     u.email,
@@ -91,6 +92,7 @@ $resultInfo = $stmt3->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CURRÍCULO+ | Currículos submetidos</title>
     <link rel="stylesheet" href="css/verCurriculo.css?v=1">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">    
 </head>
 <body>
     <h1>Currículos</h1>
@@ -128,7 +130,9 @@ $resultInfo = $stmt3->get_result();
                 <td data-label="Nome"><?php echo htmlspecialchars($rowInfo['nome']) . " " . htmlspecialchars($rowInfo['sobrenome']); ?></td>
                 <td data-label="Email"><?php echo htmlspecialchars($rowInfo['email']); ?></td>
                 <td data-label="Vaga"><?php echo htmlspecialchars($rowInfo['titulo']); ?></td>
-                <td data-label="Currículo"><a href="<?php echo htmlspecialchars($rowInfo['curriculo']); ?>" target="_blank">Acessar currículo</a></td>
+                <td data-label="Currículo"><a href="perfil-candidato.php?nome=<?php echo urlencode($rowInfo['nome'] . ' ' . $rowInfo['sobrenome']); ?>">
+    Acessar perfil
+</a></td>
             </tr>
         <?php endwhile; ?>
     <?php else: ?>

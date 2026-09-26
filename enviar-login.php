@@ -12,7 +12,7 @@ $senha = $_POST['senha'];
 
 try{
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $query = "SELECT u.id, u.nome, u.sobrenome, u.email, u.senha, t.id AS tipo, u.id_cidade FROM tbl_usuario u INNER JOIN tbl_tipo_usuario t ON u.tipo_usuario = t.id WHERE u.email = ?";
+        $query = "SELECT u.id, u.nome, u.sobrenome, u.email, u.senha, t.id AS tipo FROM tbl_usuario u INNER JOIN tbl_tipo_usuario t ON u.tipo_usuario = t.id WHERE u.email = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $email);
 
@@ -34,7 +34,6 @@ try{
                     $_SESSION['nome'] = $row['nome'];
                     $_SESSION['sobrenome'] = $row['sobrenome'];
                     $_SESSION['email'] = $row['email'];
-                    $_SESSION['cidade'] = $row['id_cidade'];
                     $_SESSION['tipo_usuario'] = $row['tipo'];
 
                 } else {
@@ -48,10 +47,9 @@ try{
 
     }
 } catch (Exception $e) {
-    echo "Erro no login, contate o suporte.";
+    echo "Erro no login, contate o suporte." . $e;
 }
 
 $conn->close();
-header("Location: index.php");
-
+header("Location: index.php")
 ?>
