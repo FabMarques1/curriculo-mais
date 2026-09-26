@@ -8,22 +8,7 @@ $senha = $_POST['senha'];
 
 try{
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-<<<<<<< HEAD
         $query = "SELECT u.id, u.nome, u.sobrenome, u.email, u.senha, t.id AS tipo FROM tbl_usuario u INNER JOIN tbl_tipo_usuario t ON u.tipo_usuario = t.id WHERE u.email = ?";
-=======
-        $query = "SELECT 
-                    u.id, 
-                    u.nome, 
-                    u.sobrenome, 
-                    u.data_nascimento, 
-                    u.email, 
-                    u.senha, 
-                    t.id AS tipo 
-                FROM tbl_usuario u 
-                INNER JOIN tbl_tipo_usuario t 
-                    ON u.tipo_usuario = t.id WHERE u.email = ?";
-
->>>>>>> fd767cd9714718c09127451c1d823fc847f8a26d
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $email);
 
