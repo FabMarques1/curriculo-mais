@@ -3,7 +3,7 @@ session_start();
 
 require_once("config/database.php");
 
-if(isset($_SESSION['logado'])) {
+if(isset($_SESSION['login'])) {
     $nome = $_SESSION['nome'];
     $sobrenome = $_SESSION['sobrenome'];
     $email = $_SESSION['email'];

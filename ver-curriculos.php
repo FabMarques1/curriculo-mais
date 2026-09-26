@@ -61,8 +61,10 @@ $informacoes = "SELECT
                     v.titulo,
                     c.curriculo
                 FROM tbl_curriculo c
-                INNER JOIN tbl_usuario u ON c.id_usuario = u.id
-                INNER JOIN tbl_vaga v ON c.id_vaga = v.id";
+                INNER JOIN tbl_usuario u
+                    ON c.id_usuario = u.id
+                INNER JOIN tbl_vaga v 
+                    ON c.id_vaga = v.id";
 
 if (!empty($filtroVaga)) {
     $informacoes .= " WHERE v.id = ?";

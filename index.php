@@ -2,11 +2,10 @@
 
 session_start();
 
-if(isset($_SESSION['logado'])) {
+if(isset($_SESSION['login'])) {
     $nome = $_SESSION['nome'];
     $sobrenome = $_SESSION['sobrenome'];
     $email = $_SESSION['email'];
-    $cidade = $_SESSION['cidade'];
     $tipoUsuario = $_SESSION['tipo_usuario'];
 }
 
@@ -30,7 +29,7 @@ if(isset($_SESSION['logado'])) {
                 CURRICULO<span>+</span>
             </h1>
             <nav>
-                <?php if(isset($_SESSION['logado']) && $_SESSION['logado'] == True): ?>
+                <?php if(isset($_SESSION['login']) && $_SESSION['login'] == True): ?>
                     <a href=""><?php echo $nome; ?></a>
 
                     <?php if($tipoUsuario === 2): ?>
